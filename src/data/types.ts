@@ -7,6 +7,8 @@ export const CATEGORIES = [
   "Knowledge Management",
   "Process Automation",
   "Agentic AI",
+  "Process Control",
+  "IT Service Management",
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];

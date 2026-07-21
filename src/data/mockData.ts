@@ -1,152 +1,98 @@
 import type { App, AssistantRule } from "./types";
 
 /*
- * ⚠️ PLACEHOLDER CONTENT — spec §8.
- * All app names, owners, and initials below are placeholders. Replace with real
- * onePSS apps and owners before any client-facing use. Thumbnails are abstract
- * CSS gradients (see `thumbVariant`), not real screenshots.
+ * App roster for the Vibe Hub prototype (spec §8).
+ * Tech stack, connectors, auth, environment, and update dates below are
+ * inferred placeholders (not confirmed by the app owners) — verify before
+ * any client-facing use. Thumbnails are abstract CSS gradients (see
+ * `screenshots`), not real screenshots.
  */
 
 export const APPS: App[] = [
   {
-    id: "csw-explorer",
-    name: "CSW Explorer",
-    category: "Data & Connectors",
+    id: "one-pss-hub",
+    name: "One PSS Hub",
+    category: "Knowledge Management",
     featured: true,
     description:
-      "Browse and query CSW data through a guided UI — no SQL required. Filter, preview, and export result sets with a few clicks.",
-    tags: ["#csw", "#streamlit", "#data"],
-    owners: [
-      { initials: "AM", name: "Alex Meyer", role: "Data Engineer" },
-      { initials: "PK", name: "Priya Kaur", role: "Product Owner" },
-    ],
-    tech: { frontend: "Streamlit", backend: "Python", hosting: "Azure" },
-    connectors: ["CSW"],
+      "Central knowledge hub for onePSS — surface curated SharePoint links, browse upcoming community meetups, and take role-based assessments, all from one place.",
+    tags: ["#knowledge", "#sharepoint", "#community"],
+    owners: [{ initials: "MC", name: "Maria Sofia Patino Carranza" }],
+    tech: { frontend: "React", backend: "Python/FastAPI", hosting: "Azure" },
+    connectors: ["SharePoint"],
     auth: "Bayer SSO (Entra ID)",
     environment: "Prod · onePSS",
-    updated: "2026-06-28",
+    updated: "2026-07-18",
     screenshots: ["a", "b", "c"],
   },
   {
-    id: "onepss-knowledge-avatar",
-    name: "onePSS Knowledge Avatar",
-    category: "Knowledge Management",
+    id: "shiftconnector-io-performance-smarthub",
+    name: "Shiftconnector ioPerformance SmartHub",
+    category: "IT Service Management",
     featured: true,
     description:
-      "Conversational assistant that captures and retrieves internal onePSS knowledge, with source citations back to the origin documents.",
-    tags: ["#rag", "#knowledge", "#agentic"],
-    owners: [
-      { initials: "JS", name: "Jordan Silva", role: "Knowledge Lead" },
-      { initials: "MW", name: "Mei Wang", role: "ML Engineer" },
-    ],
+      "Automatically creates and routes support tickets for Shiftconnector, turning shift-handover issues into tracked tickets without manual entry.",
+    tags: ["#automation", "#ticketing", "#shiftconnector"],
+    owners: [{ initials: "AS", name: "Alex Ramos Soszna" }],
     tech: { frontend: "React", backend: "Python/FastAPI", hosting: "Azure" },
-    connectors: ["SharePoint", "Confluence"],
+    connectors: ["Shiftconnector"],
     auth: "Bayer SSO (Entra ID)",
     environment: "Prod · onePSS",
-    updated: "2026-07-05",
+    updated: "2026-07-15",
     screenshots: ["b", "c", "a"],
   },
   {
-    id: "submission-copilot",
-    name: "Submission Copilot",
-    category: "Regulatory & Submissions",
-    status: "NEW",
+    id: "pitwin",
+    name: "PITwin",
+    category: "Process Control",
     featured: true,
     description:
-      "RAG assistant over submission dossiers. Drafts and cross-checks sections against source evidence, flagging gaps before review.",
-    tags: ["#rag", "#react", "#azure"],
+      "Manages process control technology across sites — tracks configuration, lifecycle, and change history for control-system assets.",
+    tags: ["#process-control", "#ot", "#lifecycle"],
     owners: [
-      { initials: "TR", name: "Tom Richter", role: "Regulatory Affairs" },
-      { initials: "LF", name: "Lena Fischer", role: "Solution Architect" },
+      { initials: "RS", name: "Ralf Steenhoff" },
+      { initials: "MK", name: "Marc Kalliski" },
+      { initials: "TK", name: "Tobias Kehren" },
     ],
     tech: { frontend: "React", backend: "Python/FastAPI", hosting: "Azure" },
-    connectors: ["SharePoint", "CSW"],
+    connectors: [],
     auth: "Bayer SSO (Entra ID)",
     environment: "Prod · onePSS",
-    updated: "2026-07-12",
+    updated: "2026-07-10",
     screenshots: ["c", "a", "b"],
   },
   {
-    id: "label-copy-checker",
-    name: "Label Copy Checker",
-    category: "Document Intelligence",
+    id: "digital-learning-path",
+    name: "Digital Learning Path",
+    category: "Knowledge Management",
     description:
-      "Compares label-copy versions side by side and flags differences, so reviewers spend time on the changes that matter.",
-    tags: ["#nlp", "#python"],
-    owners: [{ initials: "SD", name: "Sofia Duarte", role: "NLP Engineer" }],
+      "Offers digital training modules tailored to each user's role, guiding learners along a personalized path from onboarding to mastery.",
+    tags: ["#learning", "#training", "#role-based"],
+    owners: [{ initials: "MC", name: "Maria Sofia Patino Carranza" }],
     tech: { frontend: "Streamlit", backend: "Python", hosting: "Azure" },
     connectors: ["SharePoint"],
     auth: "Bayer SSO (Entra ID)",
     environment: "Prod · onePSS",
-    updated: "2026-05-19",
-    screenshots: ["a", "b"],
-  },
-  {
-    id: "signal-digest",
-    name: "Signal Digest",
-    category: "Process Automation",
-    description:
-      "Summarizes incoming safety signals into a concise daily digest, grouped by product and severity, delivered each morning.",
-    tags: ["#llm", "#automation"],
-    owners: [
-      { initials: "NB", name: "Noah Bauer", role: "Automation Lead" },
-      { initials: "IV", name: "Ines Vogel", role: "Pharmacovigilance" },
-    ],
-    tech: { frontend: "React", backend: "Python", hosting: "Azure" },
-    connectors: ["CSW"],
-    auth: "Bayer SSO (Entra ID)",
-    environment: "Prod · onePSS",
-    updated: "2026-06-11",
-    screenshots: ["b", "a"],
-  },
-  {
-    id: "mygenassist-bridge",
-    name: "MyGenAssist Bridge",
-    category: "Agentic AI",
-    description:
-      "Connector surface that lets hub apps call MyGenAssist through a single, governed interface — one integration instead of many.",
-    tags: ["#agentic", "#integration"],
-    owners: [{ initials: "RC", name: "Rafael Costa", role: "Platform Engineer" }],
-    tech: { frontend: "—", backend: "Python/FastAPI", hosting: "Azure" },
-    connectors: ["MyGenAssist"],
-    auth: "Bayer SSO (Entra ID)",
-    environment: "Prod · onePSS",
-    updated: "2026-07-01",
-    screenshots: ["c", "b"],
-  },
-  {
-    id: "deviation-triage-agent",
-    name: "Deviation Triage Agent",
-    category: "Agentic AI",
-    status: "BETA",
-    description:
-      "Classifies incoming deviations and routes each to the right owner, with a suggested priority and a short rationale.",
-    tags: ["#agentic", "#workflow"],
-    owners: [
-      { initials: "HK", name: "Hana Kim", role: "Quality Systems" },
-      { initials: "DO", name: "Diego Ortiz", role: "ML Engineer" },
-    ],
-    tech: { frontend: "React", backend: "Python/FastAPI", hosting: "Azure" },
-    connectors: ["SharePoint"],
-    auth: "Bayer SSO (Entra ID)",
-    environment: "Beta · onePSS",
-    updated: "2026-07-15",
+    updated: "2026-06-25",
     screenshots: ["a", "c"],
   },
   {
-    id: "prompt-studio",
-    name: "Prompt Studio",
-    category: "Knowledge Management",
+    id: "du-portfolio-comms-agent",
+    name: "DU Portfolio & Comms Agent",
+    category: "Agentic AI",
     description:
-      "Practice and test prompts against models with structured feedback, so teams build prompt skills on a safe internal sandbox.",
-    tags: ["#learning", "#chatbot"],
-    owners: [{ initials: "EG", name: "Emma Green", role: "Enablement" }],
-    tech: { frontend: "Streamlit", backend: "Python", hosting: "Azure" },
-    connectors: ["MyGenAssist"],
+      "Consolidates decentralized reporting Excels into a single global project portfolio update, replacing a slow manual rollup with an automated agent.",
+    tags: ["#agentic", "#automation", "#portfolio"],
+    owners: [
+      { initials: "AT", name: "Alexandru Tatulea-Codrean" },
+      { initials: "AP", name: "Amari Parris" },
+    ],
+    tech: { frontend: "—", backend: "Python/FastAPI", hosting: "Azure" },
+    connectors: ["Excel", "SharePoint"],
     auth: "Bayer SSO (Entra ID)",
     environment: "Prod · onePSS",
-    updated: "2026-06-02",
-    screenshots: ["b", "c"],
+    updated: "2026-07-20",
+    screenshots: ["b", "a"],
   },
 ];
 
@@ -156,16 +102,34 @@ export const FEATURED_APPS = APPS.filter((a) => a.featured);
 // checked in order; first match wins. Unmatched input falls back to GENERIC_REPLY.
 export const ASSISTANT_RULES: AssistantRule[] = [
   {
-    keywords: ["csw", "connect", "connector", "sql", "query data"],
+    keywords: ["sharepoint", "knowledge", "meetup", "community", "assessment", "search", "find information"],
     reply:
-      "For CSW, take a look at CSW Explorer — it lets you browse and query CSW data through a guided UI, no SQL needed. Submission Copilot and Signal Digest also read from CSW.",
-    apps: ["csw-explorer", "submission-copilot", "signal-digest"],
+      "One PSS Hub is your starting point for onePSS knowledge — curated SharePoint links, community meetups, and role-based assessments in one place.",
+    apps: ["one-pss-hub"],
   },
   {
-    keywords: ["document", "label", "compare", "pdf", "analysis", "analyse", "analyze"],
+    keywords: ["ticket", "shiftconnector", "support", "incident"],
     reply:
-      "For document work, Label Copy Checker compares label-copy versions and flags differences. Submission Copilot drafts and cross-checks dossier sections against sources.",
-    apps: ["label-copy-checker", "submission-copilot"],
+      "Shiftconnector ioPerformance SmartHub automatically creates and routes support tickets for Shiftconnector, so shift-handover issues get tracked without manual entry.",
+    apps: ["shiftconnector-io-performance-smarthub"],
+  },
+  {
+    keywords: ["process control", "pitwin", "control system", "ot ", "plant"],
+    reply:
+      "PITwin manages process control technology across sites — configuration, lifecycle, and change history for control-system assets.",
+    apps: ["pitwin"],
+  },
+  {
+    keywords: ["training", "learning", "course", "upskill", "onboarding"],
+    reply:
+      "Digital Learning Path offers training modules tailored to your role — a personalized path from onboarding to mastery.",
+    apps: ["digital-learning-path"],
+  },
+  {
+    keywords: ["portfolio", "excel", "reporting", "rollup", "agent"],
+    reply:
+      "DU Portfolio & Comms Agent consolidates decentralized reporting Excels into a single global project portfolio update, automating what used to be a manual rollup.",
+    apps: ["du-portfolio-comms-agent"],
   },
   {
     keywords: ["submit", "add my", "publish", "list my app", "own app", "how do i submit"],
@@ -175,33 +139,21 @@ export const ASSISTANT_RULES: AssistantRule[] = [
   {
     keywords: ["build", "what can i build", "capabilities", "what can", "get started"],
     reply:
-      "On the hub you'll find apps across Data & Connectors, Document Intelligence, Regulatory & Submissions, Knowledge Management, Process Automation, and Agentic AI. Tell me the task you have in mind and I'll point you to the closest app — plus who to ping.",
-    apps: ["onepss-knowledge-avatar", "csw-explorer"],
-  },
-  {
-    keywords: ["knowledge", "search", "ask", "find information", "rag"],
-    reply:
-      "The onePSS Knowledge Avatar is a conversational assistant over internal onePSS knowledge, with citations back to the source. Prompt Studio is handy if you want to practise the prompts first.",
-    apps: ["onepss-knowledge-avatar", "prompt-studio"],
-  },
-  {
-    keywords: ["agent", "agentic", "route", "triage", "workflow", "automation"],
-    reply:
-      "For agentic workflows, the Deviation Triage Agent classifies and routes deviations, and MyGenAssist Bridge lets hub apps call MyGenAssist through one governed interface. Signal Digest automates the daily safety-signal summary.",
-    apps: ["deviation-triage-agent", "mygenassist-bridge", "signal-digest"],
+      "On the hub you'll find apps across Knowledge Management, IT Service Management, Process Control, and Agentic AI. Tell me the task you have in mind and I'll point you to the closest app — plus who to ping.",
+    apps: ["one-pss-hub", "digital-learning-path"],
   },
 ];
 
 export const GENERIC_REPLY =
-  "I can point you to the right app in the hub. Two good starting points are the onePSS Knowledge Avatar for finding internal knowledge, and CSW Explorer for working with CSW data. Tell me the task you're trying to do — or try one of the quick starts below.";
+  "I can point you to the right app in the hub. Two good starting points are the One PSS Hub for onePSS knowledge and community, and Digital Learning Path for role-based training. Tell me the task you're trying to do — or try one of the quick starts below.";
 
-export const GENERIC_REPLY_APPS = ["onepss-knowledge-avatar", "csw-explorer"];
+export const GENERIC_REPLY_APPS = ["one-pss-hub", "digital-learning-path"];
 
 export const QUICK_STARTS = [
-  "Which app connects to CSW?",
-  "Show me document analysis apps",
+  "Where can I find onePSS SharePoint links?",
+  "How do I create a Shiftconnector ticket?",
+  "What training fits my role?",
   "How do I submit my own app?",
-  "What can I build on the hub?",
 ];
 
 export function getApp(id: string | undefined): App | undefined {

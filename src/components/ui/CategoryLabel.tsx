@@ -9,6 +9,8 @@ const DOT_COLOR: Record<Category, string> = {
   "Knowledge Management": "bg-bayer-green",
   "Process Automation": "bg-bayer-capri",
   "Agentic AI": "bg-bayer-blue",
+  "Process Control": "bg-bayer-blue",
+  "IT Service Management": "bg-bayer-capri",
 };
 
 export function CategoryLabel({
