@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+/*
+ * Bayer design tokens (spec §3).
+ * In Tailwind v4 the @theme block is the single source of truth: each token below
+ * becomes both a CSS variable AND a utility class (e.g. --color-bayer-blue -> bg-bayer-blue,
+ * text-bayer-blue, border-bayer-blue). This structurally enforces the spec rule
+ * "do not use arbitrary brand colors — use the tokens".
+ */
+@theme {
+  --color-bayer-blue: #00314e; /* Prussian Blue — primary brand */
+  --color-bayer-green: #56d500; /* Harlequin Green — accent / success / CTA */
+  --color-bayer-capri: #01beff; /* Capri — secondary accent, links, focus rings */
+  --color-bayer-blue-deep: #001f33; /* darkest surfaces, card thumbnails */
+
+  --color-surface: #f4f7fa; /* app background */
+  --color-surface-card: #ffffff; /* cards, panels */
+  --color-border-subtle: #e2e8f0; /* card borders, dividers */
+
+  --color-text-primary: #0f2a3d; /* body text */
+  --color-text-muted: #5b7185; /* secondary text, metadata */
+
+  --radius-card: 12px;
+
+  /* Font stack leads with Bayer Sans (proprietary, dropped in later), falls back to Inter. */
+  --font-sans: "Bayer Sans", "Inter", system-ui, sans-serif;
+}
+
+/* Signature Bayer gradient (spec §3) — used sparingly on hero/featured + assistant header. */
+@utility bg-bayer-gradient {
+  background-image: linear-gradient(
+    135deg,
+    #00314e 0%,
+    #01beff 60%,
+    #56d500 120%
+  );
+}
+
+/* Dark navy card-thumbnail field with a subtle gradient (spec §3, §5.5). */
+@utility bg-thumb-navy {
+  background-image: linear-gradient(150deg, #001f33 0%, #00314e 70%, #013a5e 100%);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+  }
+
+  /* Visible focus rings in Capri (spec §9). */
+  :focus-visible {
+    outline: 2px solid var(--color-bayer-capri);
+    outline-offset: 2px;
+  }
+}
