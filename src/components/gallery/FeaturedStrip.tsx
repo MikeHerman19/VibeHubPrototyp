@@ -72,7 +72,7 @@ function FeaturedCard({ app }: { app: App }) {
         ))}
       </div>
 
-      <div className="relative mt-5 flex items-center justify-between border-t border-white/20 pt-3">
+      <div className="relative mt-auto flex items-center justify-between border-t border-white/20 pt-3">
         <div className="flex items-center gap-2">
           <AvatarStack owners={app.owners} size="sm" />
           <span className="text-xs text-white/80">{app.owners[0].name}</span>
