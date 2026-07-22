@@ -2,10 +2,10 @@ import { useState } from "react";
 import { APPS, FEATURED_APPS } from "../data/mockData";
 import type { Category } from "../data/types";
 import { useFilteredApps, type SortKey } from "../lib/useFilteredApps";
-import { useToast } from "../lib/ToastContext";
 import { PageHeader } from "../components/gallery/PageHeader";
 import { FeaturedStrip } from "../components/gallery/FeaturedStrip";
 import { AppGrid } from "../components/gallery/AppGrid";
+import { SubmitModal } from "../components/submit/SubmitModal";
 
 // Screen 1 — Gallery (spec §5). Featured strip + live-filterable card grid from mock data.
 export function Gallery() {
@@ -13,7 +13,7 @@ export function Gallery() {
   const [category, setCategory] = useState<Category | "all">("all");
   const [sort, setSort] = useState<SortKey>("date");
   const [view, setView] = useState<"grid" | "list">("grid");
-  const { showToast } = useToast();
+  const [submitOpen, setSubmitOpen] = useState(false);
 
   const results = useFilteredApps(APPS, query, category, sort);
 
@@ -32,9 +32,7 @@ export function Gallery() {
         onSort={setSort}
         view={view}
         onView={setView}
-        onSubmit={() =>
-          showToast("Demo — the “Submit an app” flow is coming soon.")
-        }
+        onSubmit={() => setSubmitOpen(true)}
       />
 
       {showFeatured && <FeaturedStrip apps={FEATURED_APPS} />}
@@ -45,6 +43,8 @@ export function Gallery() {
         </h2>
         <AppGrid apps={results} view={view} />
       </section>
+
+      <SubmitModal open={submitOpen} onClose={() => setSubmitOpen(false)} />
     </div>
   );
 }
